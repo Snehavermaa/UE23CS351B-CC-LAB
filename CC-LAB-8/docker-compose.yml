@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  node1:
+    image: raft_docker_lab_node1:latest
+    container_name: node1
+    command: python node.py 1
+    networks:
+      raftnet:
+        ipv4_address: 172.28.0.2
+
+  node2:
+    image: raft_docker_lab_node1:latest
+    container_name: node2
+    command: python node.py 2
+    networks:
+      raftnet:
+        ipv4_address: 172.28.0.3
+
+  node3:
+    image: raft_docker_lab_node1:latest
+    container_name: node3
+    command: python node.py 3
+    networks:
+      raftnet:
+        ipv4_address: 172.28.0.4
+
+  node4:
+    image: raft_docker_lab_node1:latest
+    container_name: node4
+    command: python node.py 4
+    networks:
+      raftnet:
+        ipv4_address: 172.28.0.5
+
+  node5:
+    image: raft_docker_lab_node1:latest
+    container_name: node5
+    command: python node.py 5
+    networks:
+      raftnet:
+        ipv4_address: 172.28.0.6
+
+networks:
+  raftnet:
+    name: raftnet
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
